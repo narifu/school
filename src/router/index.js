@@ -8,6 +8,9 @@ const Location = r => require.ensure([], () => r(require('@/pages/Location')), '
 const LocationDetail = r => require.ensure([], () => r(require('@/pages/LocationDetail')), 'LocationDetail');
 const Record = r => require.ensure([], () => r(require('@/pages/Record')), 'Record');
 const RecordDetail = r => require.ensure([], () => r(require('@/pages/RecordDetail')), 'RecordDetail');
+const Company = r => require.ensure([], () => r(require('@/pages/Company')), 'Company');
+const CompanyDetail = r => require.ensure([], () => r(require('@/pages/CompanyDetail')), 'CompanyDetail');
+
 
 
 Vue.use(Router);
@@ -53,6 +56,16 @@ const router = new Router({
       path: '/record/detail',
       name: 'RecordDetail',
       component: RecordDetail,
+    },
+    {
+      path: '/company',
+      name: 'Company',
+      component: Company,
+    },
+    {
+      path: '/company/detail',
+      name: 'CompanyDetail',
+      component: CompanyDetail,
     },
   ],
 });

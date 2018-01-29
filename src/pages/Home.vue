@@ -45,6 +45,7 @@ export default {
       return [
         { 'icon':"fa fa-address-card fa-2x",'text': '签到提交','link':'/location?type=sign'},
         { 'icon':"fa fa-address-card fa-2x",'text': '位置共享','link':'/location?type=share'},
+        { 'icon':"fa fa-address-card fa-2x",'text': '实习单位','link':'/company'},
         { 'icon':"fa fa-address-card fa-2x",'text': '实习记录','link':'/record'},
         { 'icon':"fa fa-address-card fa-2x",'text': '实习总结'},
         { 'icon':"fa fa-address-card fa-2x",'text': '实习成绩'},

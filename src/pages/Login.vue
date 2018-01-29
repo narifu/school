@@ -2,7 +2,7 @@
 <page>
             <menu-bar title="登录"/>
             <r-image :list="logo"/>
-             <group>
+             <card>
             <cell type="row" :vertical="true">
                         <cell top='0px'>
     <x-input title="账号" v-model="name" placeholder="请输入手机号">
@@ -17,19 +17,25 @@
                         </cell>
                       
             </cell>
-              </group>
+              </card>
 
-               <box padding="10px 20px">
+               
+              <tab-bar>
+          <cell type="row" :vertical="true">
+                        <cell top='0px'>
+                   <box padding='10px 20px'>
                   <r-button type="primary" link='/home'>登录</r-button>
-               </box>
-            
+                   </box>
+                        </cell>
+            </cell>
+       </tab-bar>
 
 </page>
 </template>
 
 <script>
-import { Page, RImage, RButton, Cell, Box, MenuBar,Divider,TabBar } from "rainbow-mobile-core";
-import { XInput, Group } from "vux";
+import { Page, RImage, RButton, Cell,Card, Box, MenuBar,Divider,TabBar } from "rainbow-mobile-core";
+import { XInput } from "vux";
 import logo from "../assets/logo.png";
 export default {
   components: {
@@ -37,7 +43,7 @@ export default {
     RImage,
     RButton,
     Cell,
-    Group,
+    Card,
     XInput,
     Box,
     MenuBar,

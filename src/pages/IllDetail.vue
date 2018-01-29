@@ -1,18 +1,18 @@
 <template>
   <page>
       <top title="请假详情" :showBack="true"/>
-       <r-form>
+       <card>
           <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
           <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
 
-       </r-form>
-       <r-form>
+       </card>
+       <card>
           <selector  title="请假类型" :options="options" :model="type" @on-change="onChange"></selector>
-       </r-form>
+       </card>
            
-      <r-form>
+      <card>
           <x-textarea title="请假事由" :model="value"></x-textarea>
-      </r-form>
+      </card>
 
      
   <tab-bar>

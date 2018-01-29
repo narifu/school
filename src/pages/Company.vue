@@ -1,15 +1,14 @@
 <template>
   <page>
-      <top title="请假" :showBack="true"/>
-            <card title="请假列表">
-                                       <r-table :data="data" :border="true"/>
-            </card>
-      
-      <tab-bar>
+      <top title="实习单位" :showBack="true"/>
+       <card title='实习单位列表'>
+                                <r-table :data="data" :border="true"/>
+       </card>
+  <tab-bar>
           <cell type="row" :vertical="true">
                         <cell top='0px'>
                    <box padding='10px 20px'>
-                      <r-button type="primary">请假申请</r-button>
+          <r-button type='primary'>增加</r-button>
                    </box>
                         </cell>
             </cell>
@@ -18,7 +17,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,RForm, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
+import { Page, RImage, RButton,TabBar,RForm, Cell, Box, MenuBar,Grid,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 import index from "../assets/top.gif";
 
@@ -41,11 +40,11 @@ export default {
       ],
        data:{
         "head":[
-          [{'text':'时间'},{'text':'类型'},{'text':'状态'}]
+          [{'text':'开始时间'},{'text':'结束时间'},{'text':'单位'}]
         ],
         "body":[
-          [{'text':'2017-09-09 09:09'},{'text':'事假'},{'text':'已审批','link':'/ill/detail?id=1'}],
-          [{'text':'2017-09-09 09:09'},{'text':'病假'},{'text':'未审批','link':'/ill/detail?id=2'}]
+          [{'text':'2017-09-09'},{'text':'2017-09-09'},{'text':'地点1','link':'/company/detail?id=1'}],
+          [{'text':'2017-09-09'},{'text':'2017-09-09'},{'text':'地点2','link':'/company/detail?id=2'}]
         ]
       },
     };

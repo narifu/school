@@ -1,9 +1,9 @@
 <template>
   <page>
       <top title="实习记录" :showBack="true"/>
-       <r-form>
+       <card title="实习记录列表">
                                 <r-table :data="data" :border="true"/>
-       </r-form>
+       </card>
   <tab-bar>
           <cell type="row" :vertical="true">
                         <cell top='0px'>

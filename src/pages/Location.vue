@@ -1,9 +1,9 @@
 <template>
   <page>
       <top title="签到" :showBack="true"/>
-       <r-form>
+       <card title='签到列表'>
                                 <r-table :data="data" :border="true"/>
-       </r-form>
+       </card>
   <tab-bar>
           <cell type="row" :vertical="true">
                         <cell top='0px'>
