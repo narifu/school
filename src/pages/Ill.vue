@@ -4,23 +4,22 @@
             <card title="请假列表">
                                        <r-table :data="data" :border="true"/>
             </card>
-      
-      <tab-bar>
-          <cell type="row" :vertical="true">
-                        <cell top='0px'>
-                   <box padding='10px 20px'>
-                      <r-button type="primary">请假申请</r-button>
-                   </box>
-                        </cell>
-            </cell>
-       </tab-bar>
+            
+            <tab-bar>
+                <cell type="row" :vertical="true">
+                              <cell top='0px'>
+                                  <box padding='10px 20px'>
+                                      <r-button type="primary">请假申请</r-button>
+                                  </box>
+                              </cell>
+                  </cell>
+            </tab-bar>
   </page>
 </template>
 
 <script>
 import { Page, RImage, RButton,RForm, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
-import index from "../assets/top.gif";
 
 export default {
   components: {

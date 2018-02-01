@@ -47,11 +47,11 @@ export default {
         { 'icon':"fa fa-address-card fa-2x",'text': '位置共享','link':'/location?type=share'},
         { 'icon':"fa fa-address-card fa-2x",'text': '实习单位','link':'/company'},
         { 'icon':"fa fa-address-card fa-2x",'text': '实习记录','link':'/record'},
-        { 'icon':"fa fa-address-card fa-2x",'text': '实习总结'},
+        { 'icon':"fa fa-address-card fa-2x",'text': '实习总结','link':'/summary'},
         { 'icon':"fa fa-address-card fa-2x",'text': '实习成绩'},
-        { 'icon':"fa fa-address-card fa-2x",'text': '实习表现'},
+        { 'icon':"fa fa-address-card fa-2x",'text': '实习表现','link':'/performance'},
         { 'icon':"fa fa-address-card fa-2x",'text': '个人信息'},
-        { 'icon':"fa fa-address-card fa-2x",'text': '修改密码'},
+        { 'icon':"fa fa-address-card fa-2x",'text': '修改密码','link':'/password'},
 
       ]
     }

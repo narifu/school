@@ -1,26 +1,13 @@
 <template>
   <page>
-      <top title="请假详情" :showBack="true"/>
+      <top title="修改密码" :showBack="true"/>
               <card>
-                  <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
-                  <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
+                 <r-input title="原密码" placeholder="请输入原密码" :isPassword="true"/>
+                 <r-input title="新密码" placeholder="请输入新密码" :isPassword="true"/>
+                 <r-input title="确认密码" placeholder="再输入新密码" :isPassword="true"/>
               </card>
-              <card>
-                  <selector  title="请假类型" :options="options" :model="type" @on-change="onChange"></selector>
-              </card>
-           
-              <card>
-                  <r-textarea placeholder="请假事由" :model="value" :height="250" :max="300"></r-textarea>
-              </card>
-
-     
-             <tab-bar>
+              <tab-bar>
                   <cell type="row" :vertical="true">
-                                <cell top='0px'>
-                                    <box padding='10px 20px'>
-                                          <r-button type='primary'>上传病假单图片</r-button>
-                                    </box>
-                                </cell>
                                 <cell top='0px'>
                                   <box padding='10px 20px'>
                                       <r-button type='primary'>提交</r-button>
@@ -36,7 +23,7 @@ import {
   Page,
   RImage,
   RButton,
-  RTextarea,
+  RInput,
   Selector,
   Cell,
   Box,
@@ -60,7 +47,7 @@ export default {
     DateTime,
     RForm,
     Selector,
-    RTextarea,
+    RInput,
     TabBar,
     Cell
   },

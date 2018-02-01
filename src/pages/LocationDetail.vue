@@ -2,23 +2,17 @@
   <page>
       <top title="签到详情" :showBack="true"/>
       <div class="map">88888</div>
-
        <tab-bar>
-
-         
-          <cell type="row" :vertical="true">
+            <cell type="row" :vertical="true">
                         <cell top='0px'>
-                      <div>宝山区</div>
-
+                            <div>宝山区</div>
                         </cell>
                         <cell top='0px'>
-                   <box padding='10px 20px'>
-                      <r-button type="primary">签到</r-button>
-                   </box>
+                            <box padding='10px 20px'>
+                                <r-button type="primary">签到</r-button>
+                            </box>
                         </cell>
-                      
             </cell>
-                 
        </tab-bar>
   </page>
 </template>
