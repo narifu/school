@@ -14,7 +14,6 @@
 <script>
 import { Page, RImage, RButton,RForm, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
-
 export default {
   components: {
     Top,
