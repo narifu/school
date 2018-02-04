@@ -16,14 +16,14 @@
            
                 <tab-bar>
                     <cell type="row" :vertical="true">
-                                  <cell top='0px'>
-                                      <box padding='10px 20px'>
+                                  <cell>
+                                      <box>
                                             <r-button type='danger'>删除</r-button>
                                       </box>
                                   </cell>
-                                  <cell top='0px'>
-                                      <box padding='10px 20px'>
-                                            <r-button type='primary'>提交</r-button>
+                                  <cell>
+                                      <box>
+                                            <r-button >提交</r-button>
                                       </box>
                                   </cell>
                       </cell>

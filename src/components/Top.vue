@@ -1,17 +1,17 @@
 <template>
 <div>
         <menu-bar :title="title" :showBack="showBack" backText="后退" :showMore="true" :onClickMore="onClickMore"></menu-bar>
-        <action-sheet :showMenu="showMenu" :menuList="menuList" :headerHtml="headerHtml" :onClick="onClickSheet"/>
+        <actionsheet :showMenu="showMenu" :menuList="menuList" :headerHtml="headerHtml" :onClick="onClickSheet"/>
 </div>
 </template>
 
 <script>
-import { MenuBar,ActionSheet} from 'rainbow-mobile-core';
+import { MenuBar,Actionsheet} from 'rainbow-mobile-core';
 
 export default {
   components: {
     MenuBar,
-    ActionSheet 
+    Actionsheet 
   },
   props: {
     title: String,

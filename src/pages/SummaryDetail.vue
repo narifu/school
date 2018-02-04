@@ -1,16 +1,17 @@
 <template>
   <page>
-      <top title="修改密码" :showBack="true"/>
-              <card>
-                 <r-input title="原密码" placeholder="请输入原密码" :isPassword="true"/>
-                 <r-input title="新密码" placeholder="请输入新密码" :isPassword="true"/>
-                 <r-input title="确认密码" placeholder="再输入新密码" :isPassword="true"/>
-              </card>
-              <tab-bar>
+      <top title="实习评价" :showBack="true"/>
+             <r-textarea placeholder="请输入实习总结评价或者打回理由" :model="value" :height="600" :max="600"></r-textarea>
+             <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell >
                                   <box >
                                       <r-button >提交</r-button>
+                                  </box>
+                                </cell>
+                                 <cell >
+                                  <box >
+                                      <r-button type='danger'>打回</r-button>
                                   </box>
                                 </cell>
                     </cell>
@@ -23,7 +24,7 @@ import {
   Page,
   RImage,
   RButton,
-  RInput,
+  RTextarea,
   Selector,
   Cell,
   Box,
@@ -47,7 +48,7 @@ export default {
     DateTime,
     RForm,
     Selector,
-    RInput,
+    RTextarea,
     TabBar,
     Cell
   },

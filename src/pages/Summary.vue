@@ -1,14 +1,12 @@
 <template>
   <page>
       <top title="实习总结" :showBack="true"/>
-              <card>
                   <r-textarea placeholder="请输入实习总结描述" :model="value" :height="600" :max="600"></r-textarea>
-              </card>
              <tab-bar>
                   <cell type="row" :vertical="true">
-                                <cell top='0px'>
-                                  <box padding='10px 20px'>
-                                      <r-button type='primary'>提交</r-button>
+                                <cell >
+                                  <box >
+                                      <r-button >提交</r-button>
                                   </box>
                                 </cell>
                     </cell>

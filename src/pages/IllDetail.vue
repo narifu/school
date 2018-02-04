@@ -3,7 +3,7 @@
       <top title="请假详情" :showBack="true"/>
               <card>
                   <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
-                  <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
+                  <date-time  title='结束时间' :model="startDate" @on-change="onChange"></date-time>
               </card>
               <card>
                   <selector  title="请假类型" :options="options" :model="type" @on-change="onChange"></selector>
@@ -16,14 +16,14 @@
      
              <tab-bar>
                   <cell type="row" :vertical="true">
-                                <cell top='0px'>
-                                    <box padding='10px 20px'>
-                                          <r-button type='primary'>上传病假单图片</r-button>
+                                <cell>
+                                    <box>
+                                          <r-button>上传病假单图片</r-button>
                                     </box>
                                 </cell>
-                                <cell top='0px'>
-                                  <box padding='10px 20px'>
-                                      <r-button type='primary'>提交</r-button>
+                                <cell>
+                                  <box>
+                                      <r-button>提交</r-button>
                                   </box>
                                 </cell>
                     </cell>

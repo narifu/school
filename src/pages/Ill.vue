@@ -1,15 +1,14 @@
 <template>
   <page>
-      <top title="请假" :showBack="true"/>
-            <card title="请假列表">
-                                       <r-table :data="data" :border="true"/>
+      <top title="请假列表" :showBack="true"/>
+            <card>
+                <r-table :data="data" />
             </card>
-            
             <tab-bar>
                 <cell type="row" :vertical="true">
-                              <cell top='0px'>
-                                  <box padding='10px 20px'>
-                                      <r-button type="primary">请假申请</r-button>
+                              <cell>
+                                  <box>
+                                      <r-button link='/ill/detail'>请假申请</r-button>
                                   </box>
                               </cell>
                   </cell>
@@ -35,9 +34,6 @@ export default {
   },
   data() {
     return {
-      head:[
-        {"class":"index","src":index}
-      ],
        data:{
         "head":[
           [{'text':'时间'},{'text':'类型'},{'text':'状态'}]

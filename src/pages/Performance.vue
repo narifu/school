@@ -7,12 +7,24 @@
             <card title="记录表现">
                   <div id="record" style="width: 100%;height:270px;"></div>
             </card>
+            <card>
+                  <r-textarea placeholder="实习评价" :model="value" :height="250" :max="300"></r-textarea>
+            </card>
+             <tab-bar>
+            <cell type="row" :vertical="true">
+                        <cell >
+                            <box >
+                                <r-button>提交</r-button>
+                            </box>
+                        </cell>
+            </cell>
+       </tab-bar>
           
   </page>
 </template>
 
 <script>
-import { Page, RImage, RButton,RForm, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
+import { Page, RImage, RButton,RTextarea, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -24,7 +36,7 @@ export default {
     RTable,
     TabBar,
     Cell,
-    RForm
+    RTextarea
   },
   mounted (){
         const myChart = echarts.init(document.getElementById('ill'));
