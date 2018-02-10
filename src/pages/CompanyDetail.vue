@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { Page, RImage, RInput,RButton, Selector,Cell, Box,TabBar, DateTime,Grid,Card,RTable,RForm,Selecter} from "rainbow-mobile-core";
+import { Page, RImage, RInput,RButton, Selector,Cell, Box,TabBar, DateTime,Grid,Card,RTable,Selecter} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -43,7 +43,6 @@ export default {
     RButton,
     RTable,
     DateTime,
-    RForm,
     Selector,
     RInput,
     TabBar,

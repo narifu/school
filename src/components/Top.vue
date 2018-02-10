@@ -1,16 +1,16 @@
 <template>
 <div>
-        <menu-bar :title="title" :showBack="showBack" backText="后退" :showMore="true" :onClickMore="onClickMore"></menu-bar>
+        <r-header :title="title" :showBack="showBack" backText="后退" :showMore="true" :onClickMore="onClickMore"></r-header>
         <actionsheet :showMenu="showMenu" :menuList="menuList" :headerHtml="headerHtml" :onClick="onClickSheet"/>
 </div>
 </template>
 
 <script>
-import { MenuBar,Actionsheet} from 'rainbow-mobile-core';
+import { RHeader,Actionsheet} from 'rainbow-mobile-core';
 
 export default {
   components: {
-    MenuBar,
+    RHeader,
     Actionsheet 
   },
   props: {

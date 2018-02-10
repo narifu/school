@@ -13,14 +13,12 @@
                   <r-textarea placeholder="请假事由" :model="value" :height="250" :max="300"></r-textarea>
               </card>
 
+              <card title="上传病假单">
+<upload/>
+              </card>
      
              <tab-bar>
                   <cell type="row" :vertical="true">
-                                <cell>
-                                    <box>
-                                          <r-button>上传病假单图片</r-button>
-                                    </box>
-                                </cell>
                                 <cell>
                                   <box>
                                       <r-button>提交</r-button>
@@ -45,9 +43,9 @@ import {
   Grid,
   Card,
   RTable,
-  RForm,
   Selecter
 } from "rainbow-mobile-core";
+import {Upload} from "rainbow-mobile-upload";
 import Top from "../components/Top.vue";
 export default {
   components: {
@@ -58,11 +56,11 @@ export default {
     RButton,
     RTable,
     DateTime,
-    RForm,
     Selector,
     RTextarea,
     TabBar,
-    Cell
+    Cell,
+    Upload
   },
   data() {
     return {

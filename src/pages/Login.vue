@@ -1,6 +1,6 @@
 <template>
 <page>
-            <menu-bar title="上海行健职业技术学院"/>
+            <r-header title="上海行健职业技术学院"/>
             <r-image :list="logo"/>
              <card>
                 <r-input :model="name" placeholder="请输入手机号" :isPhone="true">
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,RInput, Cell,Card, Box, MenuBar,Divider,TabBar } from "rainbow-mobile-core";
+import { Page, RImage, RButton,RInput, Cell,Card, Box, RHeader,Divider,TabBar } from "rainbow-mobile-core";
 import logo from "../assets/logo.png";
 export default {
   components: {
@@ -35,7 +35,7 @@ export default {
     Card,
     RInput,
     Box,
-    MenuBar,
+    RHeader,
     Divider,
     TabBar
   },

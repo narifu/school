@@ -1,12 +1,20 @@
 <template>
   <page>
       <top title="公告" :showBack="true"/>
-            <panel :data="list" type='4'/>
+      <row title="筛选" :isLink="true" :value="filter" :onClick="onClickFilter"/>
+      <panel :data="list" type='4'/>
+      <popup position="right" :show="showFilter" :disableMask="true">
+
+        <checker title="信息来源"  :data="objectList" type="list" :modelKey="true"/>
+        <box position="center" >
+        <r-button :mini="true">筛选</r-button>
+        </box>
+      </popup>
   </page>
 </template>
 
 <script>
-import { Page, RImage, RButton, Cell, Box, MenuBar,Grid,Card,Panel} from "rainbow-mobile-core";
+import { Page, RImage, RButton,Row, Cell, Box,Popup,Checker, MenuBar,Grid,Card,Panel} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 import index from "../assets/top.gif";
 
@@ -17,10 +25,18 @@ export default {
     RImage,
     Card,
     Grid,
-    Panel
+    Panel,
+    Row,
+    Popup,
+    Checker,
+    RButton,
+    Box
   },
   data() {
     return {
+       filter:null,
+       showFilter:false,
+      objectList: [{key: '1', value: '学校公告'}, {key: '2', value: '系公告'}, {key: '3', value: '导师公告'}],
        list: [{
         src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
         title: '标题一',
@@ -44,8 +60,10 @@ export default {
       }]
     };
   },
-  computed :{
-    
+  methods :{
+    onClickFilter(){
+        this.showFilter= true;
+    }
   }
 };
 </script>

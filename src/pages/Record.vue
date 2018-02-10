@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,TabBar,RForm, Cell, Box, MenuBar,Grid,Card,RTable } from "rainbow-mobile-core";
+import { Page, RImage, RButton,TabBar, Cell, Box, MenuBar,Grid,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -29,7 +29,6 @@ export default {
     RTable,
     TabBar,
     Cell,
-    RForm
   },
   data() {
     return {

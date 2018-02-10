@@ -29,7 +29,6 @@ import {
   Grid,
   Card,
   RTable,
-  RForm
 } from "rainbow-mobile-core";
 import Top from "../components/Top.vue";
 export default {
@@ -41,7 +40,6 @@ export default {
     RButton,
     RTable,
     DateTime,
-    RForm,
     Picker,
     RTextarea,
     TabBar,

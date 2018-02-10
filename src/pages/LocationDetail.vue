@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,RForm, Cell, Box, MenuBar,Grid,Card,RTable,TabBar } from "rainbow-mobile-core";
+import { Page, RImage, RButton, Cell, Box, MenuBar,Grid,Card,RTable,TabBar } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 
 export default {
@@ -30,7 +30,6 @@ export default {
     RButton,
     RTable,
     Cell,
-    RForm,
     TabBar
   },
   data() {
@@ -44,6 +43,7 @@ export default {
     //var point = new BMap.Point(116.331398,39.897445);
     //map.centerAndZoom(point,12);
 
+    map.disableDragging();     //禁止拖拽
 
     var myGeo = new BMap.Geocoder();
    
@@ -52,7 +52,7 @@ export default {
     var geolocation = new BMap.Geolocation();
     geolocation.getCurrentPosition(function(r){
 		if(this.getStatus() == BMAP_STATUS_SUCCESS){
-          map.centerAndZoom(r.point,12);
+          map.centerAndZoom(r.point,16);
           var mk = new BMap.Marker(r.point);
           map.addOverlay(mk);
           map.panTo(r.point);
@@ -62,7 +62,8 @@ export default {
                   } 
           });
 
-          mk.enableDragging();
+          //mk.enableDragging();
+
     
           mk.addEventListener("dragend", function(e){  
             // alert("当前位置：" + e.point.lng + ", " + e.point.lat);  
@@ -88,15 +89,15 @@ export default {
 	},{enableHighAccuracy: true});
 
 
-    var navigationControl = new BMap.NavigationControl({
-      // 靠左上角位置
-      anchor: BMAP_ANCHOR_TOP_LEFT,
-      // LARGE类型
-      type: BMAP_NAVIGATION_CONTROL_LARGE,
-      // 启用显示定位
-      enableGeolocation: true
-    });
-    map.addControl(navigationControl);
+    // var navigationControl = new BMap.NavigationControl({
+    //   // 靠左上角位置
+    //   anchor: BMAP_ANCHOR_TOP_LEFT,
+    //   // LARGE类型
+    //   type: BMAP_NAVIGATION_CONTROL_LARGE,
+    //   // 启用显示定位
+    //   enableGeolocation: true
+    // });
+    // map.addControl(navigationControl);
 
   }
 };
