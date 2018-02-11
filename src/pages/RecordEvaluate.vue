@@ -2,8 +2,8 @@
   <page>
       <top title="记录评价" :showBack="true"/>
           <card>
-                  <r-input title="分数"/>
-                  <r-textarea placeholder="实习评价" :model="value"  :autoSize="true" :height="400" :max="400"></r-textarea>
+                  <r-input title="分数" :model="this" value="name"/>
+                  <r-textarea placeholder="实习评价" :model="this" value="name"  :autoSize="true" :height="400" :max="400"></r-textarea>
           </card>
               <tab-bar>
                 <cell type="row" :vertical="true">

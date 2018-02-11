@@ -1,7 +1,7 @@
 <template>
 <div>
         <r-header :title="title" :showBack="showBack" backText="后退" :showMore="true" :onClickMore="onClickMore"></r-header>
-        <actionsheet :showMenu="showMenu" :menuList="menuList" :headerHtml="headerHtml" :onClick="onClickSheet"/>
+        <actionsheet :model="this" value="showMenu" :menuList="menuList" :headerHtml="headerHtml" :onClick="onClickSheet"/>
 </div>
 </template>
 

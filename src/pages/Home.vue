@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton, Cell, Box, MenuBar,Grid,Card,Popup} from "rainbow-mobile-core";
+import { Page, RImage,ConfirmApi, RButton, Cell, Box, MenuBar,Grid,Card,Popup} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 import index from "../assets/top.gif";
 
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       shareShow:false,
+      user:{},
       head:[
         {"class":"index","src":index}
       ]
@@ -72,7 +73,7 @@ export default {
   },
   methods:{
       goto(){
-        this.shareShow=true;
+        
       }
   }
 };

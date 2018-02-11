@@ -1,7 +1,8 @@
 <template>
   <page>
       <top title="实习总结" :showBack="true"/>
-                  <r-textarea placeholder="请输入实习总结描述" :model="value" :height="600" :max="600"></r-textarea>
+                  <r-textarea placeholder="请输入实习总结描述" :model="this" value="name" :height="600" :max="600"></r-textarea>
+      
              <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell >
@@ -50,7 +51,7 @@ export default {
       startDate: null,
       endDate: null,
       type: null,
-      value: null,
+      name: null,
       options: [{ key: "sj", value: "事假" }, { key: "bj", value: "病假" }]
     };
   },

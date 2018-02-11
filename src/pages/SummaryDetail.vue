@@ -1,7 +1,7 @@
 <template>
   <page>
       <top title="实习评价" :showBack="true"/>
-             <r-textarea placeholder="请输入实习总结评价或者打回理由" :model="value" :height="600" :max="600"></r-textarea>
+             <r-textarea placeholder="请输入实习总结评价或者打回理由" :model="this" value="name" :height="600" :max="600"></r-textarea>
              <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell >

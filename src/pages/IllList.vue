@@ -3,15 +3,15 @@
       <top title="请假审批" :showBack="true"/>
 
               <card>
-                  <picker  title="班级" :options="options1" ></picker>
-                  <picker  title="学生" :options="options2" ></picker>
+                  <picker  title="班级" :options="options1"  :model="this"  value="name" ></picker>
+                  <picker  title="学生" :options="options2"  :model="this"  value="name" ></picker>
               </card>
               <card>
-                  <selector  title="状态" :options="options" :model="type" ></selector>
+                  <selector  title="状态" :options="options" :model="this" value="type" ></selector>
               </card>
               <card>
-                  <date-time  title='开始时间' :model="startDate" ></date-time>
-                  <date-time  title='结束时间' :model="startDate" ></date-time>
+                  <date-time  title='开始时间' :model="this" value="startDate"></date-time>
+                  <date-time  title='结束时间' :model="this" value="startDate" ></date-time>
               </card>
                 <card>
                       <r-table :data="data" />
@@ -52,8 +52,8 @@ export default {
       options2:[['张三','李四']],
       startDate:null,
       type:null,
-      options: [{ key: "sj", value: "未审批" }, { key: "bj", value: "已审批" }]
-
+      options: [{ key: "sj", value: "未审批" }, { key: "bj", value: "已审批" }],
+      name:[]
     };
   },
   methods:{

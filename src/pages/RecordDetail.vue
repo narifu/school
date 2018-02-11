@@ -2,14 +2,14 @@
   <page>
       <top title="记录详情" :showBack="true"/>
               <card>
-                  <date-time  title='开始时间' :model="startDate" ></date-time>
-                  <date-time  title='结束时间' :model="startDate" ></date-time>
+                  <date-time  title='开始时间' :model="this" value="name" ></date-time>
+                  <date-time  title='结束时间' :model="this" value="name"></date-time>
               </card>
               <card>
-                  <r-textarea placeholder="实习描述" :model="value" :height="200" :max="200"></r-textarea>
+                  <r-textarea placeholder="实习描述" :model="this" value="name" :height="200" :max="200"></r-textarea>
               </card>
                 <card>
-                  <r-textarea placeholder="实习评价" :model="value"  :autoSize="true" :rows="10" :max="200"></r-textarea>
+                  <r-textarea placeholder="实习评价" :model="this" value="name"  :autoSize="true" :rows="10" :max="200"></r-textarea>
               </card>
      
               <tab-bar>
@@ -46,7 +46,7 @@ export default {
       startDate:null,
       endDate:null,
       type:null,
-      value:null,
+      name:null,
       options:[{"key":"sj","value":"事假"},{"key":"bj","value":"病假"}]
     };
   },

@@ -2,8 +2,8 @@
   <page>
       <top title="手机审批" :showBack="true"/>
                   <card>
-                      <picker  title="班级" :options="options1" ></picker>
-                      <picker  title="学生" :options="options2" ></picker>
+                      <picker  title="班级" :options="options1" :model="this" value="name"></picker>
+                      <picker  title="学生" :options="options2" :model="this" value="name"></picker>
                   </card>
                   <card>
                       <r-table :data="data" />
@@ -55,7 +55,7 @@ export default {
       },
       options1:[['一班','二班']],
       options2:[['张三','李四']],
-      startDate:null
+      name:[]
     };
   },
   computed :{

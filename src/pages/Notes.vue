@@ -1,11 +1,11 @@
 <template>
   <page>
       <top title="公告" :showBack="true"/>
-      <row title="筛选" :isLink="true" :value="filter" :onClick="onClickFilter"/>
+      <row title="筛选" :isLink="true" :value="filterValue" :onClick="onClickFilter"/>
       <panel :data="list" type='4'/>
-      <popup position="right" :show="showFilter" :disableMask="true">
+      <popup position="right" :model="this" value="showFilter" :disableMask="true">
 
-        <checker title="信息来源"  :data="objectList" type="list" :modelKey="true"/>
+        <checker title="信息来源"  :data="objectList" :modelKey="true" :model="this" value="filter" />
         <box position="center" >
         <r-button :mini="true">筛选</r-button>
         </box>
@@ -36,7 +36,8 @@ export default {
     return {
        filter:null,
        showFilter:false,
-      objectList: [{key: '1', value: '学校公告'}, {key: '2', value: '系公告'}, {key: '3', value: '导师公告'}],
+       filterValue:null,
+       objectList: [{key: '1', value: '学校公告'}, {key: '2', value: '系公告'}, {key: '3', value: '导师公告'}],
        list: [{
         src: 'http://placeholder.qiniudn.com/60x60/3cc51f/ffffff',
         title: '标题一',

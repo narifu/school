@@ -2,12 +2,12 @@
   <page>
       <top title="学生考勤" :showBack="true"/>
               <card>
-                  <picker  title="班级" :options="options1" ></picker>
-                  <picker  title="学生" :options="options2" ></picker>
+                  <picker  title="班级" :options="options1" :model="this" value="name"   ></picker>
+                  <picker  title="学生" :options="options2" :model="this" value="name"  ></picker>
               </card>
               <card>
-                  <date-time  title='开始时间' :model="startDate" ></date-time>
-                  <date-time  title='结束时间' :model="startDate" ></date-time>
+                  <date-time  title='开始时间' :model="this"  value="startDate" ></date-time>
+                  <date-time  title='结束时间' :model="this"  value="startDate" ></date-time>
               </card>
                 <card>
                       <r-table :data="data" />
@@ -34,6 +34,7 @@ export default {
   },
   data() {
     return {
+      name:[],
        data:{
         "head":[
           [{'text':'姓名'},{'text':'地点'},{'text':'状态'}]

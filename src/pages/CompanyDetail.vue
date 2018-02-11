@@ -2,16 +2,16 @@
   <page>
       <top title="实习单位详情" :showBack="true"/>
                 <card>
-                    <r-input title="名称" :model="name" placeholder="请输入实习单位名称"/>
-                    <r-input title="地址" :model="name" placeholder="请输入实习单位地址"/>
+                    <r-input title="名称" :model="this" value="name" placeholder="请输入实习单位名称"/>
+                    <r-input title="地址" :model="this" value="name" placeholder="请输入实习单位地址"/>
                 </card>
                 <card>
-                    <date-time  title='开始时间' :model="startDate" ></date-time>
-                    <date-time  title='开始时间' :model="startDate" ></date-time>
+                    <date-time  title='开始时间' :model="this" value="startDate" ></date-time>
+                    <date-time  title='开始时间' :model="this" value="startDate" ></date-time>
                 </card>
                 <card>
-                    <r-input title="导师名字" :model="name" placeholder="请输入导师名字"/>
-                    <r-input title="导师电话" :model="name" placeholder="请输入导师手机号"/>
+                    <r-input title="导师名字" :model="this" value="name" placeholder="请输入导师名字"/>
+                    <r-input title="导师电话" :model="this" value="name" placeholder="请输入导师手机号"/>
                 </card>
            
                 <tab-bar>

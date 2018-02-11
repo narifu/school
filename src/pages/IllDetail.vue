@@ -2,15 +2,15 @@
   <page>
       <top title="请假详情" :showBack="true"/>
               <card>
-                  <date-time  title='开始时间' :model="startDate" @on-change="onChange"></date-time>
-                  <date-time  title='结束时间' :model="startDate" @on-change="onChange"></date-time>
+                  <date-time  title='开始时间' :model="this" value="startDate" @onChange="onChange"></date-time>
+                  <date-time  title='结束时间' :model="this" value="startDate" @onChange="onChange"></date-time>
               </card>
               <card>
-                  <selector  title="请假类型" :options="options" :model="type" @on-change="onChange"></selector>
+                  <selector  title="请假类型" :options="options" :model="this" value="type" @onChange="onChange"></selector>
               </card>
            
               <card>
-                  <r-textarea placeholder="请假事由" :model="value" :height="250" :max="300"></r-textarea>
+                  <r-textarea placeholder="请假事由" :model="this"  value="value" :height="250" :max="300"></r-textarea>
               </card>
 
               <card title="上传病假单">

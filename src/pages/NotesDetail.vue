@@ -2,8 +2,8 @@
   <page>
              <top title="消息详情" :showBack="true"/>
               <card>
-                  <r-input title="标题"/>
-                  <r-textarea placeholder="消息详情" :model="value" :height="667" :max="300"></r-textarea>
+                  <r-input title="标题" model="this" value="name"/>
+                  <r-textarea placeholder="消息详情" model="this" value="name" :height="667" :max="300"></r-textarea>
               </card>
   </page>
 </template>

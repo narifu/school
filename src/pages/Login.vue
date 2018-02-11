@@ -3,10 +3,10 @@
             <r-header title="上海行健职业技术学院"/>
             <r-image :list="logo"/>
              <card>
-                <r-input :model="name" placeholder="请输入手机号" :isPhone="true">
+                <r-input :model="user" value="name" placeholder="请输入手机号" :isPhone="true">
                   <span class="fa fa-phone" style="margin-left:10px;margin-right:10px;"/>
                 </r-input>
-                <r-input :model="password" placeholder="请输入密码" :isPassword="true">
+                <r-input placeholder="请输入密码" :isPassword="true" :model="user" value="password">
                   <span class="fa fa-eye-slash"  style="margin-left:10px;margin-right:10px;"/>
                 </r-input>
               </card>
@@ -47,8 +47,10 @@ export default {
           src: logo
         }
       ],
-      name: null,
-      password: null
+      user:{
+            name: null,
+            password: null
+      }
     };
   },
   computed: {

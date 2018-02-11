@@ -2,9 +2,9 @@
   <page>
       <top title="修改密码" :showBack="true"/>
               <card>
-                 <r-input title="原密码" placeholder="请输入原密码" :isPassword="true"/>
-                 <r-input title="新密码" placeholder="请输入新密码" :isPassword="true"/>
-                 <r-input title="确认密码" placeholder="再输入新密码" :isPassword="true"/>
+                 <r-input title="原密码" placeholder="请输入原密码" :model="this" value="name" :isPassword="true"/>
+                 <r-input title="新密码" placeholder="请输入新密码" :model="this" value="name" :isPassword="true"/>
+                 <r-input title="确认密码" placeholder="再输入新密码" :model="this" value="name" :isPassword="true"/>
               </card>
               <tab-bar>
                   <cell type="row" :vertical="true">

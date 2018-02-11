@@ -8,7 +8,7 @@
                   <div id="record" style="width: 100%;height:270px;"></div>
             </card>
             <card>
-                  <r-textarea placeholder="实习评价" :model="value" :height="250" :max="300"></r-textarea>
+                  <r-textarea placeholder="实习评价" :model="this" value="name" :height="250" :max="300"></r-textarea>
             </card>
              <tab-bar>
             <cell type="row" :vertical="true">
@@ -37,6 +37,11 @@ export default {
     TabBar,
     Cell,
     RTextarea
+  },
+  data(){
+      return {
+          name:null
+      }
   },
   mounted (){
         const myChart = echarts.init(document.getElementById('ill'));
