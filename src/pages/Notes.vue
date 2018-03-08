@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="公告" :showBack="true"/>
+      <r-body>
       <row title="筛选" :isLink="true" :value="filterValue" :onClick="onClickFilter"/>
       <panel :data="list" type='4'/>
       <popup position="right" :model="this" value="showFilter" :disableMask="true">
@@ -10,11 +11,12 @@
         <r-button :mini="true">筛选</r-button>
         </box>
       </popup>
+      </r-body>
   </page>
 </template>
 
 <script>
-import { Page, RImage, RButton,Row, Cell, Box,Popup,Checker, MenuBar,Grid,Card,Panel} from "rainbow-mobile-core";
+import { Page,RBody, RImage, RButton,Row, Cell, Box,Popup,Checker, MenuBar,Grid,Card,Panel} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 import index from "../assets/top.gif";
 
@@ -30,7 +32,8 @@ export default {
     Popup,
     Checker,
     RButton,
-    Box
+    Box,
+    RBody
   },
   data() {
     return {

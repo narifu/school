@@ -1,9 +1,11 @@
 <template>
   <page>
       <top title="签到" :showBack="true"/>
+      <r-body>
                     <card>
                           <r-table :data="data" />
-                    </card>           
+                    </card>  
+      </r-body>         
         <tab-bar>
             <cell type="row" :vertical="true">
                           <cell >
@@ -17,7 +19,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,TabBar, Cell, Box, MenuBar,Grid,Card,RTable } from "rainbow-mobile-core";
+import { Page, RBody,RImage, RButton,TabBar, Cell, Box, MenuBar,Grid,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 
 export default {
@@ -30,6 +32,7 @@ export default {
     RTable,
     TabBar,
     Cell,
+    RBody
   },
   data() {
     return {

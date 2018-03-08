@@ -1,13 +1,15 @@
 <template>
   <page>
       <top title="手机审批" :showBack="true"/>
+      <r-body>
                   <card>
                       <picker  title="班级" :options="options1" :model="this" value="name"></picker>
                       <picker  title="学生" :options="options2" :model="this" value="name"></picker>
                   </card>
                   <card>
                       <r-table :data="data" />
-                  </card>           
+                  </card>  
+      </r-body>         
         <tab-bar>
             <cell type="row" :vertical="true">
                           <cell >
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,TabBar,Picker, Cell, Box, DateTime,Grid,Card,RTable } from "rainbow-mobile-core";
+import { Page, RBody,RImage, RButton,TabBar,Picker, Cell, Box, DateTime,Grid,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 
 export default {
@@ -40,7 +42,8 @@ export default {
     TabBar,
     Cell,
     Picker,
-    DateTime
+    DateTime,
+    RBody
   },
   data() {
     return {

@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="信息发布" :showBack="true"/>
+      <r-body>
               <card>
                   <picker  title="班级" :options="options1" :model="this" value="name"></picker>
                   <picker  title="学生" :options="options2" :model="this" value="name"></picker>
@@ -9,7 +10,7 @@
               <card>
                  <r-textarea :model="this" value="name1" placeholder="请输入要发布的信息" :max='300' :height="350"/>
               </card>
-             
+      </r-body> 
             <tab-bar>
                 <cell type="row" :vertical="true">
                               <cell >
@@ -36,6 +37,7 @@ import {
   Grid,
   Card,
   RTable,
+  RBody
 } from "rainbow-mobile-core";
 import Top from "../components/Top.vue";
 export default {
@@ -50,7 +52,8 @@ export default {
     Picker,
     RTextarea,
     TabBar,
-    Cell
+    Cell,
+    RBody
   },
   data() {
     return {

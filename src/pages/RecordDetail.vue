@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="记录详情" :showBack="true"/>
+      <r-body>
               <card>
                   <date-time  title='开始时间' :model="this" value="name" ></date-time>
                   <date-time  title='结束时间' :model="this" value="name"></date-time>
@@ -11,7 +12,7 @@
                 <card>
                   <r-textarea placeholder="实习评价" :model="this" value="name"  :autoSize="true" :rows="10" :max="200"></r-textarea>
               </card>
-     
+      </r-body>
               <tab-bar>
                 <cell type="row" :vertical="true">
                               <cell >
@@ -25,7 +26,7 @@
 </template>
 
 <script>
-import { Page, RImage,RTextarea, RButton, Selector,Cell, Box,TabBar, DateTime,Grid,Card,RTable,Selecter} from "rainbow-mobile-core";
+import { Page, RBody,RImage,RTextarea, RButton, Selector,Cell, Box,TabBar, DateTime,Grid,Card,RTable,Selecter} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -39,7 +40,8 @@ export default {
     Selector,
     RTextarea,
     TabBar,
-    Cell
+    Cell,
+    RBody
   },
   data() {
     return {

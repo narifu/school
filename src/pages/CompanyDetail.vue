@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="实习单位详情" :showBack="true"/>
+      <r-body>
                 <card>
                     <r-input title="名称" :model="this" value="name" placeholder="请输入实习单位名称"/>
                     <r-input title="地址" :model="this" value="name" placeholder="请输入实习单位地址"/>
@@ -13,7 +14,7 @@
                     <r-input title="导师名字" :model="this" value="name" placeholder="请输入导师名字"/>
                     <r-input title="导师电话" :model="this" value="name" placeholder="请输入导师手机号"/>
                 </card>
-           
+      </r-body>
                 <tab-bar>
                     <cell type="row" :vertical="true">
                                   <cell>
@@ -32,7 +33,7 @@
 </template>
 
 <script>
-import { Page, RImage, RInput,RButton, Selector,Cell, Box,TabBar, DateTime,Grid,Card,RTable,Selecter} from "rainbow-mobile-core";
+import { Page, RImage,RBody, RInput,RButton, Selector,Cell, Box,TabBar, DateTime,Grid,Card,RTable,Selecter} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -46,7 +47,8 @@ export default {
     Selector,
     RInput,
     TabBar,
-    Cell
+    Cell,
+    RBody
   },
   data() {
     return {

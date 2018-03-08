@@ -1,6 +1,7 @@
 <template>
 <page>
             <r-header title="上海行健职业技术学院"/>
+            <r-body>
             <r-image :list="logo"/>
              <card>
                 <r-input :model="user" value="name" placeholder="请输入手机号" :isPhone="true">
@@ -10,11 +11,12 @@
                   <span class="fa fa-eye-slash"  style="margin-left:10px;margin-right:10px;"/>
                 </r-input>
               </card>
+            </r-body>
               <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell >
                                     <box >
-                                    <r-button  link='/home'>登录</r-button>
+                                    <r-button  :onClick="login">登录</r-button>
                                     </box>
                                 </cell>
                     </cell>
@@ -24,7 +26,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,RInput, Cell,Card, Box, RHeader,Divider,TabBar } from "rainbow-mobile-core";
+import { Page, RImage,RBody, RButton,RInput, Cell,Card, Box, RHeader,Divider,TabBar } from "rainbow-mobile-core";
 import logo from "../assets/logo.png";
 export default {
   components: {
@@ -37,7 +39,8 @@ export default {
     Box,
     RHeader,
     Divider,
-    TabBar
+    TabBar,
+    RBody
   },
   data() {
     return {
@@ -53,44 +56,27 @@ export default {
       }
     };
   },
-  computed: {
-    cardList() {
-      return [
-        {
-          link: "/component/core",
-          number: "40",
-          text: this.$t("component.core")
-        },
-        {
-          link: "/component/advanced",
-          number: "16",
-          text: this.$t("component.advanced")
-        },
-        {
-          link: "/component/business",
-          number: "1",
-          text: this.$t("component.business")
-        },
-        {
-          link: "/component/business",
-          number: "1",
-          text: this.$t("component.project")
-        }
-      ];
+  methods: {
+    login(){
+            // const url = `user/login?userName=${this.user.name}&password=${this.user.password}`;
+                        const url = `location/sharing/count?studentNo=1`;
+
+            this.$http.get(url).then((res)=>{
+                console.log(res)
+                this.$router.push({"name":"Home"});
+            },(error)=>{
+                console.error(error);
+            });
+
+            //  AjaxUtil.call("http://118.190.96.118:8080/exercitation-app/user/login?userName=null&password=null").then((res)=>{
+            //     console.log(res)
+            // },(error)=>{
+            //     console.log(error);
+            // });
     }
   },
   mounted(){
-        var md = new MobileDetect(window.navigator.userAgent);
-        console.log( md.mobile() );          // 'Sony'  
-        console.log( md.phone() );           // 'Sony'  
-        console.log( md.tablet() );          // null  
-        console.log( md.userAgent() );       // 'Safari'  
-        console.log( md.os() );              // 'AndroidOS'  
-        console.log( md.is('iPhone') );      // false  
-        console.log( md.is('bot') );         // false  
-        console.log( md.version('Webkit') );         // 534.3  
-        console.log( md.versionStr('Build') );       // '4.1.A.0.562'  
-        console.log( md.match('playstation|xbox') ); // false 
+    
   }
 };
 </script>

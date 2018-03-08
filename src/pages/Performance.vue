@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="实习表现" :showBack="true"/>
+      <r-body>
             <card title="请假表现">
                   <div id="ill" style="width: 100%;height:270px;"></div>
             </card>
@@ -10,6 +11,7 @@
             <card>
                   <r-textarea placeholder="实习评价" :model="this" value="name" :height="250" :max="300"></r-textarea>
             </card>
+      </r-body>
              <tab-bar>
             <cell type="row" :vertical="true">
                         <cell >
@@ -24,7 +26,7 @@
 </template>
 
 <script>
-import { Page, RImage, RButton,RTextarea, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
+import { Page, RBody,RImage, RButton,RTextarea, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -36,7 +38,8 @@ export default {
     RTable,
     TabBar,
     Cell,
-    RTextarea
+    RTextarea,
+    RBody
   },
   data(){
       return {

@@ -1,11 +1,13 @@
 <template>
   <page>
       <top title="修改密码" :showBack="true"/>
+      <r-body>
               <card>
                  <r-input title="原密码" placeholder="请输入原密码" :model="this" value="name" :isPassword="true"/>
                  <r-input title="新密码" placeholder="请输入新密码" :model="this" value="name" :isPassword="true"/>
                  <r-input title="确认密码" placeholder="再输入新密码" :model="this" value="name" :isPassword="true"/>
               </card>
+      </r-body>
               <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell >
@@ -32,7 +34,8 @@ import {
   Grid,
   Card,
   RTable,
-  Selecter
+  Selecter,
+  RBody
 } from "rainbow-mobile-core";
 import Top from "../components/Top.vue";
 export default {
@@ -47,7 +50,8 @@ export default {
     Selector,
     RInput,
     TabBar,
-    Cell
+    Cell,
+    RBody
   },
   data() {
     return {
@@ -55,6 +59,7 @@ export default {
       endDate: null,
       type: null,
       value: null,
+      name:null,
       options: [{ key: "sj", value: "事假" }, { key: "bj", value: "病假" }]
     };
   },

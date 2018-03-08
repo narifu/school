@@ -4,6 +4,11 @@ import store from "./plugin/loading";
 import router from './router/index';
 import i18n from './i18n/index';
 import "./plugin/fastClick";
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
+Vue.http.options.root = 'http://118.190.96.118:8080/exercitation-app'; 
+Vue.http.options.emulateHTTP = true;
+Vue.http.options.emulateJSON = true;
 
 Vue.config.productionTip = false;
 

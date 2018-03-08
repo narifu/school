@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="请假详情" :showBack="true"/>
+      <r-body>
               <card>
                   <date-time  title='开始时间' :model="this" value="startDate" @onChange="onChange"></date-time>
                   <date-time  title='结束时间' :model="this" value="startDate" @onChange="onChange"></date-time>
@@ -16,7 +17,7 @@
               <card title="上传病假单">
 <upload/>
               </card>
-     
+      </r-body>
              <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell>
@@ -43,7 +44,8 @@ import {
   Grid,
   Card,
   RTable,
-  Selecter
+  Selecter,
+  RBody
 } from "rainbow-mobile-core";
 import {Upload} from "rainbow-mobile-upload";
 import Top from "../components/Top.vue";
@@ -60,7 +62,8 @@ export default {
     RTextarea,
     TabBar,
     Cell,
-    Upload
+    Upload,
+    RBody
   },
   data() {
     return {

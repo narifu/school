@@ -1,10 +1,12 @@
 <template>
   <page>
              <top title="消息详情" :showBack="true"/>
+             <r-body>
               <card>
                   <r-input title="标题" model="this" value="name"/>
                   <r-textarea placeholder="消息详情" model="this" value="name" :height="667" :max="300"></r-textarea>
               </card>
+             </r-body>
   </page>
 </template>
 
@@ -14,6 +16,7 @@ import {
   RTextarea,
   Card,
   RInput,
+  RBody
 } from "rainbow-mobile-core";
 import Top from "../components/Top.vue";
 export default {
@@ -22,7 +25,8 @@ export default {
     Page,
     Card,
     RTextarea,
-    RInput
+    RInput,
+    RBody
   },
   data() {
     return {

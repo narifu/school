@@ -1,6 +1,7 @@
 <template>
   <page>
       <top title="学生考勤" :showBack="true"/>
+      <r-body>
               <card>
                   <picker  title="班级" :options="options1" :model="this" value="name"   ></picker>
                   <picker  title="学生" :options="options2" :model="this" value="name"  ></picker>
@@ -12,12 +13,12 @@
                 <card>
                       <r-table :data="data" />
                 </card>
-               
+      </r-body>       
   </page>
 </template>
 
 <script>
-import { Page, RImage, RButton,TabBar,Picker, Cell, Box, DateTime,Grid,Card,RTable } from "rainbow-mobile-core";
+import { Page,RBody, RImage, RButton,TabBar,Picker, Cell, Box, DateTime,Grid,Card,RTable } from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 export default {
   components: {
@@ -30,7 +31,8 @@ export default {
     DateTime,
     Cell,
     Picker,
-    TabBar
+    TabBar,
+    RBody
   },
   data() {
     return {
