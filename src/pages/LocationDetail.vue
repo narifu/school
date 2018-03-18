@@ -62,10 +62,10 @@ export default {
   methods: {
     async click() {
       const param = {
-        id: this.$route.query.id,
-        longitude: this.longitude,
-        latitude: this.latitude,
-        address: this.locationName
+        "id": this.$route.query.id,
+        "sharedLongitude": this.longitude,
+        "sharedLatitude": this.latitude,
+        "sharedAddress": this.locationName
       };
       const status = await this.$http.post(`location/sharing/response`,param);
       console.log(status)
