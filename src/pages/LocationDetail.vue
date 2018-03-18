@@ -2,6 +2,7 @@
   <page>
       <top title="签到详情" :showBack="true"/>
       <div id="container" class="map"></div>
+                      <toast :model="this" value="showFlag" :text="toastText" :type='type'/>
 
        <tab-bar>
             <cell type="row" :vertical="true">
@@ -30,7 +31,8 @@ import {
   Grid,
   Card,
   RTable,
-  TabBar
+  TabBar,
+  Toast
 } from "rainbow-mobile-core";
 import Top from "../components/Top.vue";
 
@@ -44,13 +46,17 @@ export default {
     RTable,
     Cell,
     TabBar,
-    RBody
+    RBody,
+    Toast
   },
   data() {
     return {
       locationName: null,
       latitude: null,
-      longitude: null
+      longitude: null,
+      showFlag:false,
+      toastText:"",
+      type:"success",
     };
   },
   methods: {
@@ -63,6 +69,14 @@ export default {
       };
       const status = await this.$http.post(`location/sharing/response`,param);
       console.log(status)
+      if(status){
+        this.toastText="响应成功";
+        this.showFlag=true;
+      }else{
+        this.toastText="响应失败";
+        this.type = "warn";
+        this.showFlag=true;
+      }
     }
   },
   mounted() {

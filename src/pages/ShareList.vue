@@ -98,7 +98,7 @@ export default {
         this.toastText="发起成功";
         this.showFlag=true;
       }else{
-        this.toastText="发起成功";
+        this.toastText="发起失败";
         this.type = "warn";
         this.showFlag=true;
       }
