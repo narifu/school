@@ -12,6 +12,8 @@
                 </r-input>
               </card>
             </r-body>
+                        <toast :model="user" value="showFlag" :text="toastText" type='warn'/>
+
               <tab-bar>
                   <cell type="row" :vertical="true">
                                 <cell >
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-import { Page, RImage,RBody, RButton,RInput, Cell,Card, Box, RHeader,Divider,TabBar } from "rainbow-mobile-core";
+import { Page, RImage,RBody, Toast,RButton,RInput, Cell,Card, Box, RHeader,Divider,TabBar } from "rainbow-mobile-core";
 import logo from "../assets/logo.png";
 export default {
   components: {
@@ -40,7 +42,8 @@ export default {
     RHeader,
     Divider,
     TabBar,
-    RBody
+    RBody,
+    Toast
   },
   data() {
     return {
@@ -51,28 +54,38 @@ export default {
         }
       ],
       user:{
-            name: null,
-            password: null
-      }
+            name: 'huxiangting',
+            password: "111111",
+            showFlag:false
+      },
+      toastText:""
     };
   },
   methods: {
-    login(){
-            // const url = `user/login?userName=${this.user.name}&password=${this.user.password}`;
-                        const url = `location/sharing/count?studentNo=1`;
+    async login(){
 
-            this.$http.get(url).then((res)=>{
-                console.log(res)
-                this.$router.push({"name":"Home"});
-            },(error)=>{
-                console.error(error);
-            });
+          if(_.isEmpty(this.user.name)){
+                this.toastText="手机号不能为空";
+                this.user.showFlag = true;
+          }else if(_.isEmpty(this.user.password)){
+                this.toastText="密码不能为空";
+                this.user.showFlag = true;
+          }else{
+            // localStorage.setItem('auth.jwt_token',"111111");
+                            // this.$router.push({"name":"Home"});
+                  const url = `user/login?userName=${this.user.name}&password=${this.user.password}`;
+                  const login = await this.$http.get(url);
+                  console.log(login)
+                  if(login.body.success){
+                    sessionStorage.setItem("user",JSON.stringify(login.body.userInfo));
+                    sessionStorage.setItem("functions",JSON.stringify(login.body.functions));
+                    this.$router.push({"name":"Home","params":{identityId:login.body.userInfo.identityId,functions:login.body.functions}});
+                  }else{
+                    this.toastText= login.body.message;
+                    this.user.showFlag = true;
+                  }
+          }
 
-            //  AjaxUtil.call("http://118.190.96.118:8080/exercitation-app/user/login?userName=null&password=null").then((res)=>{
-            //     console.log(res)
-            // },(error)=>{
-            //     console.log(error);
-            // });
     }
   },
   mounted(){

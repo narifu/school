@@ -8,7 +8,22 @@ import VueResource from 'vue-resource';
 Vue.use(VueResource);
 Vue.http.options.root = 'http://118.190.96.118:8080/exercitation-app'; 
 Vue.http.options.emulateHTTP = true;
-Vue.http.options.emulateJSON = true;
+Vue.http.options.emulateJSON = false;
+Vue.http.interceptors.push(function(request, next) {
+  const jwtToken = JSON.parse(localStorage.getItem('auth.jwt_token'));
+  if (jwtToken) {
+   // Vue.http.headers.common.Authorization = `${jwtToken.access_token}`;
+  } else {
+    delete Vue.http.headers.common.Authorization;
+  }
+  next(function(response) {
+      // ...
+      // 请求发送后的处理逻辑
+      // ...
+      // 根据请求的状态，response参数会返回给successCallback或errorCallback
+      return response
+    })
+  })
 
 Vue.config.productionTip = false;
 

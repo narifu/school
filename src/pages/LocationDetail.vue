@@ -107,7 +107,7 @@ export default {
 
 <style>
 #container{
-  height: 100%
+  height: 812px;
 }
 .location-name{
   font-size:16px;
