@@ -10,7 +10,7 @@
                         </cell>
                         <cell >
                             <box >
-                                <r-button >签到</r-button>
+                                <r-button :onClick="click" >签到</r-button>
                             </box>
                         </cell>
             </cell>
@@ -19,8 +19,20 @@
 </template>
 
 <script>
-import { Page,RBody, RImage, RButton, Cell, Box, MenuBar,Grid,Card,RTable,TabBar } from "rainbow-mobile-core";
-import  Top from '../components/Top.vue';
+import {
+  Page,
+  RBody,
+  RImage,
+  RButton,
+  Cell,
+  Box,
+  MenuBar,
+  Grid,
+  Card,
+  RTable,
+  TabBar
+} from "rainbow-mobile-core";
+import Top from "../components/Top.vue";
 
 export default {
   components: {
@@ -36,60 +48,74 @@ export default {
   },
   data() {
     return {
-        locationName:null
+      locationName: null,
+      latitude: null,
+      longitude: null
     };
   },
-  mounted(){
+  methods: {
+    async click() {
+      const param = {
+        id: this.$route.query.id,
+        longitude: this.longitude,
+        latitude: this.latitude,
+        address: this.locationName
+      };
+      const status = await this.$http.post(`location/sharing/response`,param);
+      console.log(status)
+    }
+  },
+  mounted() {
     const self = this;
-    const map = new BMap.Map('container');
+    const map = new BMap.Map("container");
     //var point = new BMap.Point(116.331398,39.897445);
     //map.centerAndZoom(point,12);
 
-    map.disableDragging();     //禁止拖拽
+    map.disableDragging(); //禁止拖拽
 
     var myGeo = new BMap.Geocoder();
-   
-
 
     var geolocation = new BMap.Geolocation();
-    geolocation.getCurrentPosition(function(r){
-		if(this.getStatus() == BMAP_STATUS_SUCCESS){
-          map.centerAndZoom(r.point,16);
+    geolocation.getCurrentPosition(
+      function(r) {
+        if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+          map.centerAndZoom(r.point, 16);
           var mk = new BMap.Marker(r.point);
           map.addOverlay(mk);
           map.panTo(r.point);
-          myGeo.getLocation(r.point,  function(result){
-                  if (result){
-                    self.locationName = result.address
-                  } 
+          myGeo.getLocation(r.point, function(result) {
+            if (result) {
+              self.longitude = r.longitude;
+              self.latitude = r.latitude;
+              self.locationName = result.address;
+            }
           });
 
           //mk.enableDragging();
 
-    
-          mk.addEventListener("dragend", function(e){  
-            // alert("当前位置：" + e.point.lng + ", " + e.point.lat);  
-             myGeo.getLocation( e.point,  function(result){
-                  if (result){
-                    self.locationName = result.address
-                  } 
-             });
-          })
-          mk.addEventListener("click", function(){  
-             var p = mk.getPosition();       //获取marker的位置
+          mk.addEventListener("dragend", function(e) {
+            // alert("当前位置：" + e.point.lng + ", " + e.point.lat);
+            myGeo.getLocation(e.point, function(result) {
+              if (result) {
+                self.locationName = result.address;
+              }
+            });
+          });
+          mk.addEventListener("click", function() {
+            var p = mk.getPosition(); //获取marker的位置
             // alert("marker的位置是" + p.lng + "," + p.lat);
-             myGeo.getLocation(p,  function(result){
-                  if (result){
-                    self.locationName = result.address
-                  } 
-             });
-          });  
-		}
-		else {
-			alert('failed'+this.getStatus());
-		}        
-	},{enableHighAccuracy: true});
-
+            myGeo.getLocation(p, function(result) {
+              if (result) {
+                self.locationName = result.address;
+              }
+            });
+          });
+        } else {
+          alert("failed" + this.getStatus());
+        }
+      },
+      { enableHighAccuracy: true }
+    );
 
     // var navigationControl = new BMap.NavigationControl({
     //   // 靠左上角位置
@@ -100,17 +126,16 @@ export default {
     //   enableGeolocation: true
     // });
     // map.addControl(navigationControl);
-
   }
 };
 </script>
 
 <style>
-#container{
+#container {
   height: 812px;
 }
-.location-name{
-  font-size:16px;
+.location-name {
+  font-size: 16px;
   text-align: center;
 }
 </style>
