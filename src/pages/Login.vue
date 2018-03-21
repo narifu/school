@@ -77,7 +77,7 @@ export default {
                   if(login.body.success){
                     sessionStorage.setItem('auth.jwt_timestamp',login.body.timestamp);
                     sessionStorage.setItem('auth.jwt_token',login.body.token);
-                    sessionStorage.setItem('auth.jwt_Authentication',login.body.Authentication);
+                    sessionStorage.setItem('auth.jwt_Authentication',login.body.Authorization);
 
                     sessionStorage.setItem("user",JSON.stringify(login.body.userInfo));
                     sessionStorage.setItem("functions",JSON.stringify(login.body.functions));

@@ -25,15 +25,15 @@ Vue.http.interceptors.push(function(request, next) {
   request.headers.set('timestamp', timestamp); //setting request.headers
   request.headers.set('identityId', identityId); //setting request.headers
 
-  request.headers.set('Access-Control-Allow-Origin', "*"); //setting request.headers
-  request.headers.set('Access-Control-Allow-Methods', "GET,POST,PUT,DELETE,OPTIONS"); //setting request.headers
-  request.headers.set('Access-Control-Allow-Headers', "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"); //setting request.headers
+  // request.headers.set('Access-Control-Allow-Origin', "*"); //setting request.headers
+  // request.headers.set('Access-Control-Allow-Methods', "GET,POST,PUT,DELETE,OPTIONS"); //setting request.headers
+  // request.headers.set('Access-Control-Allow-Headers', "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"); //setting request.headers
 
   } else {
     // delete Vue.http.headers.common.Authorization;
   }
   next(function(response) {
-      // ...
+      // ...na
       // 请求发送后的处理逻辑
       // ...
       // 根据请求的状态，response参数会返回给successCallback或errorCallback
