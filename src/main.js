@@ -10,11 +10,27 @@ Vue.http.options.root = 'http://118.190.96.118:8080/exercitation-app';
 Vue.http.options.emulateHTTP = true;
 Vue.http.options.emulateJSON = false;
 Vue.http.interceptors.push(function(request, next) {
-  const jwtToken = JSON.parse(localStorage.getItem('auth.jwt_token'));
-  if (jwtToken) {
-   // Vue.http.headers.common.Authorization = `${jwtToken.access_token}`;
+  const timestamp = sessionStorage.getItem('auth.jwt_timestamp');
+  const token = sessionStorage.getItem('auth.jwt_token');
+  const Authentication = sessionStorage.getItem('auth.jwt_Authentication');
+
+  if (Authentication) {
+    const identityId = JSON.parse(sessionStorage.getItem('user')).identityId;
+  //  Vue.http.headers.common.Authorization = Authentication;
+  //  Vue.http.headers.common.timestamp = timestamp;
+  //  Vue.http.headers.common.token = token;
+  //  Vue.http.headers.common.identityId = identityId;
+  request.headers.set('token', token); //setting request.headers
+  request.headers.set('Authorization', Authentication); //setting request.headers
+  request.headers.set('timestamp', timestamp); //setting request.headers
+  request.headers.set('identityId', identityId); //setting request.headers
+
+  request.headers.set('Access-Control-Allow-Origin', "*"); //setting request.headers
+  request.headers.set('Access-Control-Allow-Methods', "GET,POST,PUT,DELETE,OPTIONS"); //setting request.headers
+  request.headers.set('Access-Control-Allow-Headers', "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"); //setting request.headers
+
   } else {
-    delete Vue.http.headers.common.Authorization;
+    // delete Vue.http.headers.common.Authorization;
   }
   next(function(response) {
       // ...

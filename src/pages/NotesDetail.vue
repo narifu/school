@@ -3,8 +3,8 @@
              <top title="消息详情" :showBack="true"/>
              <r-body>
               <card>
-                  <r-input title="标题" model="this" value="name"/>
-                  <r-textarea placeholder="消息详情" model="this" value="name" :height="667" :max="300"></r-textarea>
+                  <r-input title="标题" :model="this" value="title" :readonly="true"/>
+                  <r-textarea :readonly="true" placeholder="消息详情" :model="this" value="content" :height="667" :max="300"></r-textarea>
               </card>
              </r-body>
   </page>
@@ -30,15 +30,14 @@ export default {
   },
   data() {
     return {
-      startDate: null,
-      endDate: null,
-      type: null,
-      value: null,
-      options: [{ key: "sj", value: "事假" }, { key: "bj", value: "病假" }]
+      title: this.$route.query.title,
+      content:  this.$route.query.content,
     };
   },
   methods: {
     onChange() {}
+  },
+  mounted(){
   }
 };
 </script>

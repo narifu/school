@@ -71,12 +71,14 @@ export default {
                 this.toastText="密码不能为空";
                 this.user.showFlag = true;
           }else{
-            // localStorage.setItem('auth.jwt_token',"111111");
-                            // this.$router.push({"name":"Home"});
                   const url = `user/login?userName=${this.user.name}&password=${this.user.password}`;
                   const login = await this.$http.get(url);
                   console.log(login)
                   if(login.body.success){
+                    sessionStorage.setItem('auth.jwt_timestamp',login.body.timestamp);
+                    sessionStorage.setItem('auth.jwt_token',login.body.token);
+                    sessionStorage.setItem('auth.jwt_Authentication',login.body.Authentication);
+
                     sessionStorage.setItem("user",JSON.stringify(login.body.userInfo));
                     sessionStorage.setItem("functions",JSON.stringify(login.body.functions));
                     this.$router.push({"name":"Home","params":{identityId:login.body.userInfo.identityId,functions:login.body.functions}});

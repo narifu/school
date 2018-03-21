@@ -76,7 +76,7 @@ export default {
               _article["id"] = article.id;
               _article["title"] = article.title;
               _article["desc"] = article.content;
-              _article["url"] = '/notes/detail?id='+article.id;
+              _article["url"] = '/notes/detail?title='+article.title+'&content='+ article.content;
               _article["meta"] = {"source":"来源： "+ this.getSourceNameById(article.author),"date":"更新时间： "+article.updateTime};
               List.push(_article)
             });
