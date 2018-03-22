@@ -40,7 +40,7 @@ let webpackConfig = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        include: [resolve('src'), resolve('test')]
+        include: [resolve('src'), resolve('/node_modules/rainbow-mobile-core/src')]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
