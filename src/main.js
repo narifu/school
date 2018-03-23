@@ -17,18 +17,10 @@ Vue.http.interceptors.push(function(request, next) {
 
   if (Authentication) {
     const identityId = JSON.parse(sessionStorage.getItem('user')).identityId;
-  //  Vue.http.headers.common.Authorization = Authentication;
-  //  Vue.http.headers.common.timestamp = timestamp;
-  //  Vue.http.headers.common.token = token;
-  //  Vue.http.headers.common.identityId = identityId;
   request.headers.set('token', token); //setting request.headers
   request.headers.set('Authorization', Authentication); //setting request.headers
   request.headers.set('timestamp', timestamp); //setting request.headers
   request.headers.set('identityId', identityId); //setting request.headers
-
-  // request.headers.set('Access-Control-Allow-Origin', "*"); //setting request.headers
-  // request.headers.set('Access-Control-Allow-Methods', "GET,POST,PUT,DELETE,OPTIONS"); //setting request.headers
-  // request.headers.set('Access-Control-Allow-Headers', "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"); //setting request.headers
 
   } else {
     // delete Vue.http.headers.common.Authorization;
