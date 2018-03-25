@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 const Login = r => require.ensure([], () => r(require('@/pages/Login')), 'Login');
 const Home = r => require.ensure([], () => r(require('@/pages/Home')), 'Home');
-const ILL = r => require.ensure([], () => r(require('@/pages/Ill')), 'ILL');
 const ILLList = r => require.ensure([], () => r(require('@/pages/IllList')), 'ILLList');
 const IllDtail = r => require.ensure([], () => r(require('@/pages/IllDetail')), 'IllDtail');
 const Location = r => require.ensure([], () => r(require('@/pages/Location')), 'Location');
@@ -124,11 +123,6 @@ const router = new Router({
       path: '/home',
       name: 'Home',
       component: Home,
-    },
-    {
-      path: '/ill',
-      name: 'ILL',
-      component: ILL,
     },
     {
       path: '/ill/detail',

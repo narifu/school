@@ -11,4 +11,10 @@ export default {
           return id;
         }
     },
+    isStudent(self){
+      const user = JSON.parse(sessionStorage.getItem("user"));
+      if(!_.isEmpty(user)){
+        return user.userType==0?true:false;
+      }
+  },
 }

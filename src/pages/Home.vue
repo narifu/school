@@ -97,7 +97,7 @@ export default {
               { 'link': '/notes', 'number': article.body,'text': '实习公告' },
               { 'link': '/notes?type=message', 'number': message.body,'text': '实习消息' },
               { 'link': '/share', 'number': location.body,'text': '共享消息' },
-              { 'link': '/ill', 'number': leave.body,'text': '请假申请' },
+              { 'link': '/ill/list', 'number': leave.body,'text': '请假申请' },
             ]
             const gridItems = [];
             const functions = this.getFuncations();

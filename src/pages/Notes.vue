@@ -5,9 +5,10 @@
       <row title="筛选" :isLink="true" :model="this" value="filterValue" :onClick="onClickFilter"/>
       <panel :data="article_list" type='4'/>
       <popup position="right" :model="this" value="showFilter" :disableMask="true">
-        <checker title="信息来源"  :data="objectList" :modelKey="true" :model="this" value="filter" />
+        <checker title="信息来源"  :data="objectList" :modelKey="true" :model="this" value="filter" :max="1" v-if="!isMessage"/>
+        <checker title="已读/未读"  :data="filterList" :modelKey="true" :model="this" value="filter" :max="1" v-if="isMessage"/>
         <box position="center" >
-        <r-button :mini="true">筛选</r-button>
+        <r-button :mini="true" :onClick="_filter">筛选</r-button>
         </box>
       </popup>
       </r-body>
@@ -40,32 +41,63 @@ export default {
        showFilter:false,
        filterValue:null,
        objectList: [{key: '0', value: '学校'}, {key: '1', value: '教务'}, {key: '2', value: '系部'}],
+       filterList: [{key: '0', value: '未读'}, {key: '1', value: '已读'}],
        article_list: []
     };
+  },
+  computed:{
+    isMessage(){
+      if(this.$route.query&&this.$route.query.type){
+        return true;
+      }else{
+        return false;
+      }
+    }
   },
   methods :{
     onClickFilter(){
         this.showFilter= true;
     },
     getSourceNameById(id){
-       const source =   _.find(this.objectList,(source)=>{
+       const source =  _.find(this.objectList,(source)=>{
           return source.key==id;
        });
        if(source){
          return source.value;
+       }else{
+         return id;
        }
-    }
-  },
-  async mounted(){
+    },
+    _filter(){
+        let source = null;
+        if(this.isMessage){
+            source = this.filterList
+        }else{
+            source = this.objectList;
+        }
+        _.each(source,(obj)=>{
+            _.each(this.filter,(f)=>{
+                if(obj.key==f){
+                  this.filterValue = obj.value;
+                }
+            })
+        })
+        this.loadMessage();
+    },
+    async loadMessage(){
             const identityId = Util.getIdentityId(this);
             let param = null;
-            if(this.filterValue){
-              param = {"identityId":identityId,"source":this.filterValue,"pageNo":1,"pageSize":5};
+            if(this.filter){
+              if(this.isMessage){
+                param = {"identityId":identityId,"status":this.filter[0],"pageNo":1,"pageSize":20};
+              }else{
+                param = {"identityId":identityId,"source":this.filter[0],"pageNo":1,"pageSize":20};
+              }
             }else{
-              param = {"identityId":identityId,"pageNo":1,"pageSize":5};
+              param = {"identityId":identityId,"pageNo":1,"pageSize":20};
             }
             let url = "article/list";
-            if(this.$route.query&&this.$route.query.type){
+            if(this.isMessage){
                 url = "message/list"
             }
             const articles = await this.$http.post(url,param);
@@ -76,11 +108,18 @@ export default {
               _article["id"] = article.id;
               _article["title"] = article.title;
               _article["desc"] = article.content;
-              _article["url"] = '/notes/detail?title='+article.title+'&content='+ article.content;
+              _article["url"] = '/notes/detail?type='+this.isMessage+'&id='+article.id+'&title='+article.title+'&content='+ article.content;
               _article["meta"] = {"source":"来源： "+ this.getSourceNameById(article.author),"date":"更新时间： "+article.updateTime};
               List.push(_article)
             });
             this.article_list = List;
+            if(this.showFilter){
+              this.showFilter = false;
+            }
+    }
+  },
+   mounted(){
+           this.loadMessage();
   }
 };
 </script>

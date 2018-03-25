@@ -4,7 +4,7 @@
              <r-body>
               <card>
                   <r-input title="标题" :model="this" value="title" :readonly="true"/>
-                  <r-textarea :readonly="true" placeholder="消息详情" :model="this" value="content" :height="667" :max="300"></r-textarea>
+                  <r-textarea :readonly="true" placeholder="消息详情" :model="this" value="content" :height="517" :max="300"></r-textarea>
               </card>
              </r-body>
   </page>
@@ -37,7 +37,15 @@ export default {
   methods: {
     onChange() {}
   },
-  mounted(){
+  async mounted(){
+      const id = this.$route.query.id;
+      const url = 'message/readed?messageId='+id;
+              const resault = await this.$http.get(url);
+              if(!_.isEmpty(resault.body)){
+                          ConfirmApi.show(this,{
+                            content: '更新消息失败',
+              });
+      }
   }
 };
 </script>

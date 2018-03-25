@@ -54,7 +54,7 @@ export default {
         }
       ],
       user:{
-            name: 'huxiangting',
+            name: 'admin888',
             password: "111111",
             showFlag:false
       },

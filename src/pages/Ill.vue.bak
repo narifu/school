@@ -1,0 +1,66 @@
+<template>
+  <page>
+      <top title="请假列表" :showBack="true"/>
+      <r-body>
+            <card>
+                <r-table :data="data" />
+            </card>
+      </r-body>
+            <tab-bar>
+                <cell type="row" :vertical="true">
+                              <cell>
+                                  <box>
+                                      <r-button link='/ill/detail?type=submit'>请假申请</r-button>
+                                  </box>
+                              </cell>
+                  </cell>
+            </tab-bar>
+  </page>
+</template>
+
+<script>
+import { Page, RImage,RBody, RButton, Cell, Box, MenuBar,TabBar,Card,RTable } from "rainbow-mobile-core";
+import  Top from '../components/Top.vue';
+import Util from "../util/util";
+
+export default {
+  components: {
+    Top,
+    Page,
+    Card,
+    Box,
+    RButton,
+    RTable,
+    TabBar,
+    Cell,
+    RBody
+  },
+  data() {
+    return {
+       data:{
+        "head":[
+          [{'text':'开始时间'},{'text':'结束时间'},{'text':'状态'}]
+        ],
+        "body":[]
+      },
+    };
+  },
+  async mounted(){
+            this.user = JSON.parse(sessionStorage.getItem("user"));
+            const identityId = Util.getIdentityId(this);
+            const url = `leave/list`;
+            let param = {"studentNos":[identityId],"pageNo":1,"pageSize":20};
+            const leaves = await this.$http.post(url,param);
+            _.each(leaves.body,(leave)=>{
+              leave.leaveStartDate = leave.leaveStartDate?leave.leaveStartDate.substring(0,16):"";
+              leave.leaveEndDate = leave.leaveEndDate?leave.leaveEndDate.substring(0,16):"";
+              this.data.body.push([{'text':leave.leaveStartDate},{'text':leave.leaveEndDate},{'text':leave.state==1?'已审批':'未审批','link':'/ill/detail?leaveId='+leave.leaveId}])
+            })
+            if(!_.isEmpty(leaves.body)){
+              sessionStorage.setItem("leaves",JSON.stringify(leaves.body));
+            }
+  }
+};
+</script>
+
+

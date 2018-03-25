@@ -68,10 +68,11 @@ export default {
         "sharedAddress": this.locationName
       };
       const status = await this.$http.post(`location/sharing/response`,param);
-      console.log(status)
       if(status){
         this.toastText="响应成功";
         this.showFlag=true;
+        // this.$router.back()
+
       }else{
         this.toastText="响应失败";
         this.type = "warn";
