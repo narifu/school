@@ -72,7 +72,7 @@ export default {
   methods: {
     async click() {
       const param = {
-        "id": this.$route.query.id,
+        "id": this.$route.query.shareId,
         "sharedLongitude": this.longitude,
         "sharedLatitude": this.latitude,
         "sharedAddress": this.locationName

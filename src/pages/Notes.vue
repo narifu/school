@@ -42,7 +42,7 @@ export default {
        showFilter:false,
        filterValue:null,
        objectList: [{key: '0', value: '学校'}, {key: '1', value: '教务'}, {key: '2', value: '系部'}],
-       filterList: [{key: '0', value: '未读'}, {key: '1', value: '已读'}],
+       filterList: [{key: '1', value: '未读'}, {key: '0', value: '已读'}],
        article_list: []
     };
   },
@@ -87,16 +87,24 @@ export default {
     },
     async loadMessage(){
             const identityId = Util.getIdentityId(this);
-            let param = null;
-            if(this.filter){
-              if(this.isMessage){
-                param = {"identityId":identityId,"status":this.readFilter[0],"pageNo":1,"pageSize":20};
+            let param = {"identityId":identityId,"pageNo":1,"pageSize":20};
+
+             if(this.isMessage){
+                if(this.readFilter){
+                    param["status"]=this.readFilter[0];
+                }
               }else{
-                param = {"identityId":identityId,"source":this.filter[0],"status":this.readFilter[0],"pageNo":1,"pageSize":20};
+
+                if(this.filter){
+                    param["source"]=this.filter[0];
+                }
+
+                if(this.readFilter){
+                    param["status"]=this.readFilter[0];
+                }
               }
-            }else{
-              param = {"identityId":identityId,"pageNo":1,"pageSize":20};
-            }
+
+         
             let url = "article/list";
             if(this.isMessage){
                 url = "message/list"

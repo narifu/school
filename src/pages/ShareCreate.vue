@@ -122,11 +122,11 @@ export default {
     }
   },
   async mounted(){
-                  // const identityId = Util.getIdentityId(this);
-                  // const classes = await this.$http.get(`user/teacherclass?identityId=${identityId}`);
-                  // this.classes = _.map(classes.body,(cla)=>{
-                  //     return {"key":cla.classNo,"value":cla.className}
-                  // })
+                  const identityId = Util.getIdentityId(this);
+                  const classes = await this.$http.get(`user/teacherclass?identityId=${identityId}`);
+                  this.classes = _.map(classes.body,(cla)=>{
+                      return {"key":cla.classNo,"value":cla.className}
+                  })
   }
 };
 </script>

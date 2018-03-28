@@ -104,11 +104,13 @@ export default {
             const functions = this.getFuncations();
             _.each(functions,(func)=>{
                   _.each(this.gridData,(grid)=>{
-                    if(func.code==grid.code){
-                      grid["text"]= func.appFunction;
-                      grid["img"] = func.imageUrl;
-                      gridItems.push(grid);
-                    }
+                    // if(func.code==grid.code){
+                    //   grid["text"]= func.appFunction;
+                    //   grid["img"] = func.imageUrl;
+                    //   gridItems.push(grid);
+                    // }
+                                          gridItems.push(grid);
+
                   });
             });
             this.gridItems = gridItems;
