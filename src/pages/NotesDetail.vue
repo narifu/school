@@ -38,14 +38,15 @@ export default {
     onChange() {}
   },
   async mounted(){
-      const id = this.$route.query.id;
-      const url = 'message/readed?messageId='+id;
+              const id = this.$route.query.id;
+              const url = 'message/readed?messageId='+id;
               const resault = await this.$http.get(url);
               if(!_.isEmpty(resault.body)){
                           ConfirmApi.show(this,{
                             content: '更新消息失败',
-              });
-      }
+                           });
+               }
+               document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 };
 </script>

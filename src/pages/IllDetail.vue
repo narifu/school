@@ -7,14 +7,14 @@
                   <date-time  title='结束时间' :required="true" :readonly="isReadlony" :model="this" value="leaveEndDate" format="YYYY-MM-DD HH:mm" :hourList="['09', '10', '11', '12', '13', '14', '15', '16', '17', '18']" :minuteList="['00', '15', '30', '45']"></date-time>
               </card>
               <card>
-                  <selector  title="请假类型" :required="true" :readonly="isReadlony" :options="options" :model="this" value="leaveType" ></selector>
+                  <selector  title="请假类型" :required="true" :readonly="isReadlony" :options="options" :model="this" value="leaveType" :onChange="type"></selector>
               </card>
            
               <card>
                   <r-textarea placeholder="请假事由" :required="true" :readonly="isReadlony" :model="this"  value="reason" :height="200" :max="300"></r-textarea>
               </card>
 
-              <card title="上传病假单">
+              <card title="上传病假单" v-if="showBill">
                   <upload :max="1" url="leave/img" name="file" :onSuccess="uploadSuccess" v-if="!isReadlony"/>
                   <r-image :list="leaveImg" v-if="isReadlony"/>
               </card>
@@ -89,12 +89,18 @@ export default {
       leaveType:null,
       reason:null,
       leaveImg:null,
-      options: [{ key: 2, value: "事假" }, { key: 1, value: "病假" }]
+      options: [{ key: 2, value: "事假" }, { key: 1, value: "病假" }],
+      showBill:false
     };
   },
   methods: {
+    type(){
+      if(this.leaveType==1){
+        this.showBill = true;
+      }
+    },
     async submit() {
-            if(!this.leavePath){
+            if(!this.leavePath&&this.leaveType==1){
                   ConfirmApi.show(this,{
                     title: '',
                     content: '请上传病假单',

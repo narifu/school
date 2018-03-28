@@ -51,7 +51,7 @@ export default {
               const _share = [];
               _share.push({"text":share.updateTime});
              _share.push({"text":share.fkSharedRecordCreater});
-             _share.push({'text':'点击响应','link':'/location/detail?id='+share.id});
+             _share.push({'text':'点击响应','link':'/location/detail?shareId='+share.id});
               List.push(_share)
             });
             this.data.body = List;

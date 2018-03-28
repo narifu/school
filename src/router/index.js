@@ -27,6 +27,7 @@ const Personal = r => require.ensure([], () => r(require('@/pages/Personal')), '
 const Publish = r => require.ensure([], () => r(require('@/pages/Publish')), 'Publish');
 const Share = r => require.ensure([], () => r(require('@/pages/Share')), 'Share');
 const ShareList = r => require.ensure([], () => r(require('@/pages/ShareList')), 'ShareList');
+const ShareCreate= r => require.ensure([], () => r(require('@/pages/ShareCreate')), 'ShareCreate');
 const PhoneList = r => require.ensure([], () => r(require('@/pages/PhoneList')), 'PhoneList');
 
 
@@ -58,6 +59,11 @@ const router = new Router({
       path: '/share/list',
       name: 'ShareList',
       component: ShareList,
+    },
+    {
+      path: '/share/create',
+      name: 'ShareCreate',
+      component: ShareCreate,
     },
     {
       path: '/score/list',

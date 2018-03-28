@@ -1,6 +1,6 @@
 <template>
   <page>
-      <top title="签到详情" :showBack="true"/>
+      <top :title="_title" :showBack="true"/>
       <div id="container" class="map"></div>
                       <toast :model="this" value="showFlag" :text="toastText" :type='type'/>
 
@@ -11,7 +11,7 @@
                         </cell>
                         <cell >
                             <box >
-                                <r-button :onClick="click" >签到</r-button>
+                                <r-button :onClick="click" >{{_share}}</r-button>
                             </box>
                         </cell>
             </cell>
@@ -58,6 +58,16 @@ export default {
       toastText:"",
       type:"success",
     };
+  },
+  computed:{
+      _title(){
+        const shareId = this.$route.query.shareId;
+        return shareId?"位置响应":"签到详情"
+      },
+      _share(){
+        const shareId = this.$route.query.shareId;
+        return shareId?"响应":"签到"
+      }
   },
   methods: {
     async click() {

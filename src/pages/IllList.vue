@@ -53,7 +53,7 @@ export default {
     return {
       data:{
         "head":[
-          [{'text':'开始时间'},{'text':'结束时间'},{'text':'状态'}]
+          [{'text':'学生姓名'},{'text':'请假时间'},{'text':'状态'}]
         ],
         "body":[]
       },
@@ -106,7 +106,7 @@ export default {
             _.each(leaves.body,(leave)=>{
               leave.leaveStartDate = leave.leaveStartDate?leave.leaveStartDate.substring(0,16):"";
               leave.leaveEndDate = leave.leaveEndDate?leave.leaveEndDate.substring(0,16):"";
-              loadLeaves.push([{'text':leave.leaveStartDate},{'text':leave.leaveEndDate},{'text':leave.state==1?'已审批':'未审批','link':'/ill/detail?leaveId='+leave.leaveId}])
+              loadLeaves.push([{'text':leave.studentName},{'text':leave.leaveStartDate},{'text':leave.state==1?'已审批':'未审批','link':'/ill/detail?leaveId='+leave.leaveId}])
             })
             if(!_.isEmpty(leaves.body)){
               sessionStorage.setItem("leaves",JSON.stringify(leaves.body));

@@ -6,7 +6,7 @@
       <panel :data="article_list" type='4'/>
       <popup position="right" :model="this" value="showFilter" :disableMask="true">
         <checker title="信息来源"  :data="objectList" :modelKey="true" :model="this" value="filter" :max="1" v-if="!isMessage"/>
-        <checker title="已读/未读"  :data="filterList" :modelKey="true" :model="this" value="filter" :max="1" v-if="isMessage"/>
+        <checker title="已读/未读"  :data="filterList" :modelKey="true" :model="this" value="readFilter" :max="1" />
         <box position="center" >
         <r-button :mini="true" :onClick="_filter">筛选</r-button>
         </box>
@@ -38,6 +38,7 @@ export default {
   data() {
     return {
        filter:null,
+       readFilter:null,
        showFilter:false,
        filterValue:null,
        objectList: [{key: '0', value: '学校'}, {key: '1', value: '教务'}, {key: '2', value: '系部'}],
@@ -89,9 +90,9 @@ export default {
             let param = null;
             if(this.filter){
               if(this.isMessage){
-                param = {"identityId":identityId,"status":this.filter[0],"pageNo":1,"pageSize":20};
+                param = {"identityId":identityId,"status":this.readFilter[0],"pageNo":1,"pageSize":20};
               }else{
-                param = {"identityId":identityId,"source":this.filter[0],"pageNo":1,"pageSize":20};
+                param = {"identityId":identityId,"source":this.filter[0],"status":this.readFilter[0],"pageNo":1,"pageSize":20};
               }
             }else{
               param = {"identityId":identityId,"pageNo":1,"pageSize":20};
