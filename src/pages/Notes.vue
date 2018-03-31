@@ -42,7 +42,7 @@ export default {
        showFilter:false,
        filterValue:null,
        objectList: [{key: '0', value: '学校'}, {key: '1', value: '教务'}, {key: '2', value: '系部'}],
-       filterList: [{key: '1', value: '未读'}, {key: '0', value: '已读'}],
+       filterList: [{key: '0', value: '未读'}, {key: '1', value: '已读'}],
        article_list: []
     };
   },
