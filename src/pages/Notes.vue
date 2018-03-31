@@ -87,7 +87,7 @@ export default {
     },
     async loadMessage(){
             const identityId = Util.getIdentityId(this);
-            let param = {"identityId":identityId,"pageNo":1,"pageSize":20};
+            let param = {"identityId":identityId,"pageNo":1,"pageSize":30};
 
              if(this.isMessage){
                 if(this.readFilter){
@@ -114,10 +114,11 @@ export default {
             const List = [];
             _.each(articles.body,(article)=>{
               const _article = {};
-              _article["id"] = article.id;
+              _article["id"] = this.isMessage?article.id:article.readId;
               _article["title"] = article.title;
               _article["desc"] = article.content;
-              _article["url"] = '/notes/detail?type='+this.isMessage+'&id='+article.id+'&title='+article.title+'&content='+ article.content;
+              debugger;
+              _article["url"] = '/notes/detail?type='+this.isMessage+'&id='+_article.id+'&title='+article.title+'&content='+ article.content;
               _article["meta"] = {"source":"来源： "+ this.getSourceNameById(article.author),"date":"更新时间： "+article.updateTime};
               List.push(_article)
             });

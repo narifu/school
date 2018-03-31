@@ -12,11 +12,14 @@
       </card>
             </div>
       </r-body>
+      <r-dialog :model="this" value="shareShow">
+            <r-button :onClick="goto">点击响应{{fkSharedRecordCreater}}</r-button>
+      </r-dialog>
   </page>
 </template>
 
 <script>
-import { Page,RBody, RImage,ConfirmApi, RButton, Cell, Box, MenuBar,Grid,Card,Popup} from "rainbow-mobile-core";
+import { Page,RBody, RImage,RDialog,ConfirmApi, RButton, Cell, Box, MenuBar,Grid,Card,Popup} from "rainbow-mobile-core";
 import  Top from '../components/Top.vue';
 import index from "../assets/top.gif";
 import Util from "../util/util";
@@ -28,11 +31,15 @@ export default {
     Card,
     Grid,
     Popup,
-    RBody
+    RBody,
+    RDialog,
+    RButton
   },
   data() {
     return {
       shareShow:false,
+      fkSharedRecordCreater:null,
+      shareId:null,
       user:{},
       head:[
         {"class":"index","src":index}
@@ -70,7 +77,9 @@ export default {
     }
   },
   methods :{
-     
+     goto(){
+        window.location.hash='/location/detail?shareId='+this.shareId
+     },
       getFuncations(){
           const functions = this.$route.params.functions;
           if(_.isEmpty(functions)){
@@ -86,34 +95,45 @@ export default {
   async mounted(){
             this.user = JSON.parse(sessionStorage.getItem("user"));
             const identityId = Util.getIdentityId(this);
-            const location_url = `location/sharing/count?studentNo=${identityId}`;
-            const location = await this.$http.get(location_url);
-            const message_url = `message/count?identityId=${identityId}`;
-            const message = await this.$http.get(message_url);
-            const article_url = `article/count?identityId=${identityId}`;
-            const article = await this.$http.get(article_url);
-            const leave_url = `leave/count?identityId=${identityId}`;
-            const leave = await this.$http.get(leave_url);
-            this.cardList=[
-              { 'link': '/notes', 'number': article.body,'text': '实习公告' },
-              { 'link': '/notes?type=message', 'number': message.body,'text': '实习消息' },
-              { 'link': '/share', 'number': location.body,'text': '共享消息' },
-              { 'link': '/ill/list', 'number': leave.body,'text': '请假申请' },
-            ]
+            const isStudent = Util.isStudent(this);
+            if(isStudent){
+                  const sharing_url = `location/sharing/unresponsed?studentNo=${identityId}`;
+                  const sharing = await this.$http.get(sharing_url);
+                  if(!_.isEmpty(sharing.body)){
+                        this.fkSharedRecordCreater = sharing.body.fkSharedRecordCreater;
+                        this.shareId = sharing.body.id;
+                        this.shareShow=true;
+                  }
+                  const location_url = `location/sharing/count?studentNo=${identityId}`;
+                  const location = await this.$http.get(location_url);
+                  const message_url = `message/count?identityId=${identityId}`;
+                  const message = await this.$http.get(message_url);
+                  const article_url = `article/count?identityId=${identityId}`;
+                  const article = await this.$http.get(article_url);
+                  const leave_url = `leave/count?identityId=${identityId}`;
+                  const leave = await this.$http.get(leave_url);
+                  this.cardList=[
+                    { 'link': '/notes', 'number': article.body,'text': '实习公告' },
+                    { 'link': '/notes?type=message', 'number': message.body,'text': '实习消息' },
+                    { 'link': '/share', 'number': location.body,'text': '共享消息' },
+                    { 'link': '/ill/list', 'number': leave.body,'text': '请假申请' },
+                  ]
+                  
+            }
+           
             const gridItems = [];
             const functions = this.getFuncations();
             _.each(functions,(func)=>{
                   _.each(this.gridData,(grid)=>{
-                    // if(func.code==grid.code){
-                    //   grid["text"]= func.appFunction;
-                    //   grid["img"] = func.imageUrl;
-                    //   gridItems.push(grid);
-                    // }
-                                          gridItems.push(grid);
-
+                    if(func.code==grid.code){
+                      grid["text"]= func.appFunction;
+                      grid["img"] = func.imageUrl;
+                      gridItems.push(grid);
+                    }
                   });
             });
             this.gridItems = gridItems;
+             
   }
 };
 </script>

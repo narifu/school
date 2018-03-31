@@ -3,7 +3,7 @@
       <top title="请假列表" :showBack="true"/>
 <r-body>
               <card v-if="!isStudent">
-                  <picker  title="班级" :options="options1"  :model="this"  value="name" ></picker>
+                  <picker  title="班级" :options="options1"  :model="this"  value="class" ></picker>
                   <picker  title="学生" :options="options2"  :model="this"  value="name" ></picker>
               </card>
               <card>
@@ -63,6 +63,7 @@ export default {
       endDateStr:null,
       type:null,
       options: [{ key: 0, value: "未审批" }, { key: 1, value: "已审批" }],
+      class:[],
       name:[],
       flag:false
     };

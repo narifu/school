@@ -39,7 +39,13 @@ export default {
   },
   async mounted(){
               const id = this.$route.query.id;
-              const url = 'message/readed?messageId='+id;
+              const type = this.$route.query.type;
+              let url = null;
+              if(type=='true'){
+                url = 'message/readed?messageId='+id
+              }else{
+                url = 'article/readed?articleReadId='+id
+              }
               const resault = await this.$http.get(url);
               if(!_.isEmpty(resault.body)){
                           ConfirmApi.show(this,{
